@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../server/config/index.js"],"names":["module","exports","port"],"mappings":";;AAAAA,OAAOC,OAAP,GAAiB;AACfC,QAAM;AADS,CAAjB","file":"index.js","sourcesContent":["module.exports = {\n  port: 3000\n}\n"]}
