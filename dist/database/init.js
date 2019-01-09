@@ -3,13 +3,21 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.connect = undefined;
+exports.iniSchema = exports.connect = undefined;
+
+var _promise = require('babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
 
 var _mongoose = require('mongoose');
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
 var _index = require('../config/index');
+
+var _glob = require('glob');
+
+var _glob2 = _interopRequireDefault(_glob);
 
 var _path = require('path');
 
@@ -18,7 +26,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _mongoose2.default.Promise = global.Promise;
 var connect = function connect() {
     var maxConnectTimes = 0;
-    return new Promise(function (resolve, reject) {
+    return new _promise2.default(function (resolve, reject) {
         if (process.env != 'production') {
             _mongoose2.default.set('debug', true);
         }
@@ -46,5 +54,21 @@ var connect = function connect() {
         });
     });
 };
+
+var iniSchema = function iniSchema() {
+    _glob2.default.sync((0, _path.resolve)(__dirname, './schema', '**/*.js')).forEach(require);
+    var Administrators = _mongoose2.default.model("Administrators");
+    // const administrators = new Administrators({
+    //     username: '李',
+    //     password: '123',
+    //     email:'22116728@qq.com'
+    // });
+    // Administrators.comparePassword('123','$2b$10$/hu2sJVUY16DPtXaZA0lR.jiIpHOMMmUioDFMs.19XtXKmmKyjROS').then(function(data){
+    //     console.log(data)
+    // })
+    // console.log(Administrators)
+};
+
 exports.connect = connect;
+exports.iniSchema = iniSchema;
 //# sourceMappingURL=init.js.map

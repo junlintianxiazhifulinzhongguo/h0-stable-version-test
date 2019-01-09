@@ -1,5 +1,9 @@
 'use strict';
 
+var _promise = require('babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
 var _mongoose = require('mongoose');
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
@@ -68,7 +72,7 @@ administratorsSchema.pre('save', function (next) {
 });
 administratorsSchema.methods = {
     comparePassword: function comparePassword(_password, password) {
-        return new Promise(function (resolve, reject) {
+        return new _promise2.default(function (resolve, reject) {
             _bcrypt2.default.compare(_password, password, function (err, isMatch) {
                 if (!err) resolve(isMatch);else reject(err);
             });
@@ -76,7 +80,7 @@ administratorsSchema.methods = {
     },
 
     incLoginAttepts: function incLoginAttepts(user) {
-        return new Promise(function (resolve, reject) {
+        return new _promise2.default(function (resolve, reject) {
             if (undefined.lockUntil && undefined.lockUntil < Date.now()) {
                 undefined.update({
                     $set: {
