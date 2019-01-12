@@ -34,13 +34,13 @@ export class loginController
         }
     }
 
-    @get("/auth_url/:id")
+    @get("/authRedirect")
     getAlipayAuthUrlById(ctx,next)
     {
-        const result = auth_url
+        const result = ctx.query
         ctx.body = {
             result,
-            "name":"lijun"
+            "name":"111"
         }
     }   
 }
