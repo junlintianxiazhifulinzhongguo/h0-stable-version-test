@@ -28,9 +28,8 @@ export class loginController
     @get("/authUrl")
     getAlipayAuthUrl(ctx,next)
     {
-        const result = auth_url
         ctx.body = {
-            result
+            auth_url
         }
     }
 
