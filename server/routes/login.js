@@ -36,7 +36,8 @@ export class loginController
     @get("/authRedirect")
     getAlipayAuthUrlById(ctx,next)
     {
-        const result = ctx.query
+        const { app_id,source,scope,auth_code } = ctx.query
+        access_token(auth_code) 
         ctx.body = {
             result,
             "name":"111"

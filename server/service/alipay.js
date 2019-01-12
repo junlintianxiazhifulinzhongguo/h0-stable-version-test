@@ -16,7 +16,7 @@ const alipaySdk = new AlipaySdk({
 
 const auth_url= `https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=` + config.alipay.APPID +`&scope=auth_user&redirect_uri=` + config.alipay.Redirect_uri
 
-const access_token =async (alipaySdk,auth_code)=>{
+const access_token =async (auth_code)=>{
     try {
         const result = await alipaySdk.exec('alipay.system.oauth.token', {
         grantType: 'authorization_code',
