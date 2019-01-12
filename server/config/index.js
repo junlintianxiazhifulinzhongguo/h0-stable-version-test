@@ -10,7 +10,7 @@ module.exports = {
   },
   alipay: {
     URL: 'https://openapi.alipay.com/gateway.do',
-    Redirect_uri:'http://www.junlintianxiazhifulinzhongguo.top/api/authRedirect',
+    Redirect_uri:'http://www.junlintianxiazhifulinzhongguo.top/api/v0/login/authRedirect',
     APPID: '2018123062714467',
     FORMAT: 'json',
     CHARSET: 'UTF-8',
