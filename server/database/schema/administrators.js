@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import bcrypt from 'bcrypt'
+// import bcrypt from 'bcrypt'
 const Schema=mongoose.Schema
 const Mixed=Schema.Types.Mixed
 const SALT_WORK_FACTOR=10
@@ -46,24 +46,25 @@ administratorsSchema.virtual('isLocked').get(()=>{
 
 administratorsSchema.pre('save',function(next){
     if(!this.isModified('password'))return next()
-    bcrypt.genSalt(SALT_WORK_FACTOR,(err,salt)=>{
-        if(err) return next(err)      
-        bcrypt.hash(this.password,salt,(error,hash)=>{
-            if(error) return next(error)
-            console.log(this.password)
-            this.password=hash
-            console.log(this.password)
-            next()
-        })
-    })
+    // bcrypt.genSalt(SALT_WORK_FACTOR,(err,salt)=>{
+    //     if(err) return next(err)      
+    //     bcrypt.hash(this.password,salt,(error,hash)=>{
+    //         if(error) return next(error)
+    //         console.log(this.password)
+    //         this.password=hash
+    //         console.log(this.password)
+    //         next()
+    //     })
+    // })
 })
 administratorsSchema.methods={
     comparePassword:(_password,password)=>{
         return new Promise((resolve,reject)=>{
-            bcrypt.compare(_password,password,(err,isMatch)=>{
-                if(!err)resolve(isMatch)
-                else reject(err)
-            })
+            // bcrypt.compare(_password,password,(err,isMatch)=>{
+            //     if(!err)resolve(isMatch)
+            //     else reject(err)
+            // })
+            resolve(true)
         }) 
     },
 
