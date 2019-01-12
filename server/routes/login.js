@@ -25,7 +25,7 @@ export class loginController
         }
     }
     
-    @get("/auth_url")
+    @get("/authUrl")
     getAlipayAuthUrl(ctx,next)
     {
         const result = auth_url
