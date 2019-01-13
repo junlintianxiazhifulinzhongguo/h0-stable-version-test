@@ -46,5 +46,8 @@ export class loginController
         // ctx.body = {
         //     result
         // }
+        ctx.body = {
+            app_id,source,scope,auth_code
+        }
     }   
 }
