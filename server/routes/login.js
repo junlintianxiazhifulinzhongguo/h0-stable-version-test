@@ -42,13 +42,13 @@ export class loginController
         // const { access_token,alipay_user_id,expires_in,re_expires_in,refresh_token,user_id } = await access_token(auth_code)
         // const result = await user_info(access_token)
         // const [ accessToken,alipayUserId,expiresIn,reExpiresIn,refreshToken,userId ] = await access_token(auth_code)
-        const { accessToken } = await access_token(auth_code)
+        const { access_token } = await access_token(auth_code)
         // console.log(result)  
         // ctx.body = {
         //     result
         // }
         ctx.body = {
-            accessToken
+            access_token
         }
     }   
 }
