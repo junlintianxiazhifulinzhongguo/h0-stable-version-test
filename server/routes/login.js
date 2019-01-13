@@ -40,11 +40,11 @@ export class loginController
         const { app_id,source,scope,auth_code } = ctx.query
         console.log(auth_code)
         // const auth_code = '5268dd2fb0214e51824377435dd6QX57'
-        const { access_token,alipay_user_id,expires_in,re_expires_in,refresh_token,user_id } = await access_token(auth_code)
-        const result = await user_info(access_token)
-        console.log(result)  
-        ctx.body = {
-            result
-        }
+        // const { access_token,alipay_user_id,expires_in,re_expires_in,refresh_token,user_id } = await access_token(auth_code)
+        // const result = await user_info(access_token)
+        // console.log(result)  
+        // ctx.body = {
+        //     result
+        // }
     }   
 }
