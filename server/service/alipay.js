@@ -35,6 +35,7 @@ const access_token =async (auth_code)=>{
 
 const user_info = async (access_token) => {
     try {
+        console.log(access_token,333333)
         const result = await alipaySdk.exec('alipay.user.info.share', {
         auth_token: access_token
         }, {
