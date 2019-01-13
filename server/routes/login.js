@@ -9,9 +9,9 @@ import {
   } from '../lib/decorator'
 
 import {  
-  auth_url,
-  access_token,
-  user_info
+    auth_url,
+    getAccessToken,
+    getUserInfo
 } from '../service/alipay'
 
 @controller('/api/v0/login')
@@ -40,9 +40,9 @@ export class loginController
         const { app_id,source,scope,auth_code } = ctx.query
         console.log(auth_code)
         // const { access_token,alipay_user_id,expires_in,re_expires_in,refresh_token,user_id } = await access_token(auth_code)
-        // const result = await user_info(access_token)
+        // const result = await getUserInfo(access_token)
         // const [ accessToken,alipayUserId,expiresIn,reExpiresIn,refreshToken,userId ] = await access_token(auth_code)
-        const { access_token } = await access_token(auth_code)
+        const { access_token } = await getAccessToken(auth_code)
         // console.log(result)  
         // ctx.body = {
         //     result
