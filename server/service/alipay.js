@@ -18,26 +18,28 @@ const auth_url= `https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_i
 
 const access_token =async (auth_code)=>{
     try {
+        console.log(auth_code,1111222)
         const result = await alipaySdk.exec('alipay.system.oauth.token', {
         grantType: 'authorization_code',
         code: auth_code
         }, {
             validateSign: true,
-            log: this.logger,
+            log: null,
         });
         console.log(result);
+        return result
     } catch (err) {
             console.log(err)
     }
 }
 
-const user_info = async (alipaySdk,access_token) => {
+const user_info = async (access_token) => {
     try {
         const result = await alipaySdk.exec('alipay.user.info.share', {
-        auth_token: auth_token
+        auth_token: access_token
         }, {
             validateSign: true,
-            log: this.logger,
+            log: null,
         });
         console.log(result);
     } catch (err) {

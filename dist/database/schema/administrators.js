@@ -8,12 +8,9 @@ var _mongoose = require('mongoose');
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var _bcrypt = require('bcrypt');
-
-var _bcrypt2 = _interopRequireDefault(_bcrypt);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import bcrypt from 'bcrypt'
 var Schema = _mongoose2.default.Schema;
 var Mixed = Schema.Types.Mixed;
 var SALT_WORK_FACTOR = 10;
@@ -56,26 +53,26 @@ administratorsSchema.virtual('isLocked').get(function () {
 });
 
 administratorsSchema.pre('save', function (next) {
-    var _this = this;
-
     if (!this.isModified('password')) return next();
-    _bcrypt2.default.genSalt(SALT_WORK_FACTOR, function (err, salt) {
-        if (err) return next(err);
-        _bcrypt2.default.hash(_this.password, salt, function (error, hash) {
-            if (error) return next(error);
-            console.log(_this.password);
-            _this.password = hash;
-            console.log(_this.password);
-            next();
-        });
-    });
+    // bcrypt.genSalt(SALT_WORK_FACTOR,(err,salt)=>{
+    //     if(err) return next(err)      
+    //     bcrypt.hash(this.password,salt,(error,hash)=>{
+    //         if(error) return next(error)
+    //         console.log(this.password)
+    //         this.password=hash
+    //         console.log(this.password)
+    //         next()
+    //     })
+    // })
 });
 administratorsSchema.methods = {
     comparePassword: function comparePassword(_password, password) {
         return new _promise2.default(function (resolve, reject) {
-            _bcrypt2.default.compare(_password, password, function (err, isMatch) {
-                if (!err) resolve(isMatch);else reject(err);
-            });
+            // bcrypt.compare(_password,password,(err,isMatch)=>{
+            //     if(!err)resolve(isMatch)
+            //     else reject(err)
+            // })
+            resolve(true);
         });
     },
 

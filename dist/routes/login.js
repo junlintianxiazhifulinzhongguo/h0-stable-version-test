@@ -9,6 +9,14 @@ var _getOwnPropertyDescriptor = require('babel-runtime/core-js/object/get-own-pr
 
 var _getOwnPropertyDescriptor2 = _interopRequireDefault(_getOwnPropertyDescriptor);
 
+var _regenerator = require('babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -54,7 +62,7 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
     return desc;
 }
 
-var loginController = exports.loginController = (_dec = (0, _decorator.controller)('/api/v0/login'), _dec2 = (0, _decorator.get)("/"), _dec3 = (0, _decorator.get)("/auth_url"), _dec4 = (0, _decorator.get)("/auth_url/:id"), _dec(_class = (_class2 = function () {
+var loginController = exports.loginController = (_dec = (0, _decorator.controller)('/api/v0/login'), _dec2 = (0, _decorator.get)("/"), _dec3 = (0, _decorator.get)("/authUrl"), _dec4 = (0, _decorator.get)("/authRedirect"), _dec(_class = (_class2 = function () {
     function loginController() {
         (0, _classCallCheck3.default)(this, loginController);
     }
@@ -69,20 +77,60 @@ var loginController = exports.loginController = (_dec = (0, _decorator.controlle
     }, {
         key: 'getAlipayAuthUrl',
         value: function getAlipayAuthUrl(ctx, next) {
-            var result = _alipay.auth_url;
             ctx.body = {
-                result: result
+                auth_url: _alipay.auth_url
             };
         }
     }, {
         key: 'getAlipayAuthUrlById',
-        value: function getAlipayAuthUrlById(ctx, next) {
-            var result = _alipay.auth_url;
-            ctx.body = {
-                result: result,
-                "name": "lijun"
-            };
-        }
+        value: function () {
+            var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(ctx, next) {
+                var auth_code, _ref2, accessToken, alipayUserId, expiresIn, reExpiresIn, refreshToken, userId, result;
+
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                // www.junlintianxiazhifulinzhongguo.top/api/v0/login/authRedirect?app_id=2018123062714467&source=alipay_wallet&scope=auth_user&auth_code=05cfa47b90104c9eae6d760c983dOX57
+                                //const { app_id,source,scope,auth_code } = ctx.query
+
+                                auth_code = '5268dd2fb0214e51824377435dd6QX57';
+                                _context.next = 3;
+                                return (0, _alipay.access_token)(auth_code);
+
+                            case 3:
+                                _ref2 = _context.sent;
+                                accessToken = _ref2.accessToken;
+                                alipayUserId = _ref2.alipayUserId;
+                                expiresIn = _ref2.expiresIn;
+                                reExpiresIn = _ref2.reExpiresIn;
+                                refreshToken = _ref2.refreshToken;
+                                userId = _ref2.userId;
+                                _context.next = 12;
+                                return (0, _alipay.user_info)(accessToken);
+
+                            case 12:
+                                result = _context.sent;
+
+                                ctx.body = {
+                                    result: result,
+                                    "name": "111"
+                                };
+
+                            case 14:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function getAlipayAuthUrlById(_x, _x2) {
+                return _ref.apply(this, arguments);
+            }
+
+            return getAlipayAuthUrlById;
+        }()
     }]);
     return loginController;
 }(), (_applyDecoratedDescriptor(_class2.prototype, 'login', [_dec2], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'login'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'getAlipayAuthUrl', [_dec3], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'getAlipayAuthUrl'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'getAlipayAuthUrlById', [_dec4], (0, _getOwnPropertyDescriptor2.default)(_class2.prototype, 'getAlipayAuthUrlById'), _class2.prototype)), _class2)) || _class);

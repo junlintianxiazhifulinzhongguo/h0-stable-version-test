@@ -42,50 +42,51 @@ var alipaySdk = new AlipaySdk({
 var auth_url = 'https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=' + _config2.default.alipay.APPID + '&scope=auth_user&redirect_uri=' + _config2.default.alipay.Redirect_uri;
 
 var access_token = function () {
-    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(alipaySdk, auth_code) {
+    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(auth_code) {
         var result;
         return _regenerator2.default.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
                         _context.prev = 0;
-                        _context.next = 3;
+
+                        console.log(auth_code, 1111222);
+                        _context.next = 4;
                         return alipaySdk.exec('alipay.system.oauth.token', {
                             grantType: 'authorization_code',
                             code: auth_code
                         }, {
                             validateSign: true,
-                            log: undefined.logger
+                            log: null
                         });
 
-                    case 3:
+                    case 4:
                         result = _context.sent;
 
                         console.log(result);
-                        _context.next = 10;
-                        break;
+                        return _context.abrupt('return', result);
 
-                    case 7:
-                        _context.prev = 7;
+                    case 9:
+                        _context.prev = 9;
                         _context.t0 = _context['catch'](0);
 
                         console.log(_context.t0);
 
-                    case 10:
+                    case 12:
                     case 'end':
                         return _context.stop();
                 }
             }
-        }, _callee, undefined, [[0, 7]]);
+        }, _callee, undefined, [[0, 9]]);
     }));
 
-    return function access_token(_x, _x2) {
+    return function access_token(_x) {
         return _ref.apply(this, arguments);
     };
 }();
 
 var user_info = function () {
-    var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(alipaySdk, access_token) {
+    var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(access_token) {
         var result;
         return _regenerator2.default.wrap(function _callee2$(_context2) {
             while (1) {
@@ -94,10 +95,10 @@ var user_info = function () {
                         _context2.prev = 0;
                         _context2.next = 3;
                         return alipaySdk.exec('alipay.user.info.share', {
-                            auth_token: auth_token
+                            auth_token: access_token
                         }, {
                             validateSign: true,
-                            log: undefined.logger
+                            log: null
                         });
 
                     case 3:
@@ -121,7 +122,7 @@ var user_info = function () {
         }, _callee2, undefined, [[0, 7]]);
     }));
 
-    return function user_info(_x3, _x4) {
+    return function user_info(_x2) {
         return _ref2.apply(this, arguments);
     };
 }();
