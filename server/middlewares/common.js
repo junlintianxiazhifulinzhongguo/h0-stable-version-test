@@ -16,6 +16,6 @@ export const common = (app) =>{
         })
     app.on('error', (err, ctx) => {
             console.log(err)
-            logger.error('server error', err, ctx)
+            // logger.error('server error', err, ctx)
         })
 }
