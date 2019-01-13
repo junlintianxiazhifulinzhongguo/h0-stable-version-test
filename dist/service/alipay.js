@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.user_info = exports.access_token = exports.auth_url = undefined;
+exports.getUserInfo = exports.getAccessToken = exports.auth_url = undefined;
 
 var _regenerator = require('babel-runtime/regenerator');
 
@@ -41,7 +41,7 @@ var alipaySdk = new AlipaySdk({
 
 var auth_url = 'https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=' + _config2.default.alipay.APPID + '&scope=auth_user&redirect_uri=' + _config2.default.alipay.Redirect_uri;
 
-var access_token = function () {
+var getAccessToken = function () {
     var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(auth_code) {
         var result;
         return _regenerator2.default.wrap(function _callee$(_context) {
@@ -80,12 +80,12 @@ var access_token = function () {
         }, _callee, undefined, [[0, 9]]);
     }));
 
-    return function access_token(_x) {
+    return function getAccessToken(_x) {
         return _ref.apply(this, arguments);
     };
 }();
 
-var user_info = function () {
+var getUserInfo = function () {
     var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(access_token) {
         var result;
         return _regenerator2.default.wrap(function _callee2$(_context2) {
@@ -93,7 +93,9 @@ var user_info = function () {
                 switch (_context2.prev = _context2.next) {
                     case 0:
                         _context2.prev = 0;
-                        _context2.next = 3;
+
+                        console.log(access_token, 333333);
+                        _context2.next = 4;
                         return alipaySdk.exec('alipay.user.info.share', {
                             auth_token: access_token
                         }, {
@@ -101,33 +103,32 @@ var user_info = function () {
                             log: null
                         });
 
-                    case 3:
+                    case 4:
                         result = _context2.sent;
 
                         console.log(result);
-                        _context2.next = 10;
-                        break;
+                        return _context2.abrupt('return', result);
 
-                    case 7:
-                        _context2.prev = 7;
+                    case 9:
+                        _context2.prev = 9;
                         _context2.t0 = _context2['catch'](0);
 
                         console.log(_context2.t0);
 
-                    case 10:
+                    case 12:
                     case 'end':
                         return _context2.stop();
                 }
             }
-        }, _callee2, undefined, [[0, 7]]);
+        }, _callee2, undefined, [[0, 9]]);
     }));
 
-    return function user_info(_x2) {
+    return function getUserInfo(_x2) {
         return _ref2.apply(this, arguments);
     };
 }();
 
 exports.auth_url = auth_url;
-exports.access_token = access_token;
-exports.user_info = user_info;
+exports.getAccessToken = getAccessToken;
+exports.getUserInfo = getUserInfo;
 //# sourceMappingURL=alipay.js.map

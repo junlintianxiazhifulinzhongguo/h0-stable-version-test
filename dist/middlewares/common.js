@@ -60,9 +60,10 @@ var common = exports.common = function common(app) {
         return function (_x, _x2) {
             return _ref.apply(this, arguments);
         };
-    }()).on('error', function (err, ctx) {
+    }());
+    app.on('error', function (err, ctx) {
         console.log(err);
-        _koaLogger2.default.error('server error', err, ctx);
+        // logger.error('server error', err, ctx)
     });
 };
 //# sourceMappingURL=common.js.map
