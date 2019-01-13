@@ -45,12 +45,12 @@ export class loginController
         // const [ accessToken,alipayUserId,expiresIn,reExpiresIn,refreshToken,userId ] = await access_token(auth_code)
         const result_Token = await getAccessToken(auth_code)
         const result = await getUserInfo(result_Token.accessToken)
-        ctx.redirect('https://www.baidu.com',result);
-        console.log(5555)  
+        ctx.redirect('http://www.junlintianxiazhifulinzhongguo.top//login/success',result);
+        //console.log(5555)  
        // console.log(result)
-        console.log(6666)    
-        ctx.body = {
-            result
-        }
+        // console.log(6666)    
+        // ctx.body = {
+        //     result
+        // }
     }   
 }
