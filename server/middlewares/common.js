@@ -14,7 +14,7 @@ export const common = (app) =>{
             const ms = new Date() - start
             console.log(`${ctx.method} ${ctx.url} - $ms`)
         })
-        .on('error', (err, ctx) => {
+    app.on('error', (err, ctx) => {
             console.log(err)
             logger.error('server error', err, ctx)
         })
