@@ -42,6 +42,7 @@ const user_info = async (access_token) => {
             log: null,
         });
         console.log(result);
+        return result
     } catch (err) {
             console.log(err)
     }
