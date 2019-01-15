@@ -15,7 +15,7 @@ import {
     getUserInfo
 } from '../service/alipay'
 
-@controller('/#/api/v0/login')
+@controller('/api/v0/login')
 export class loginController
 {
     @get("/")
