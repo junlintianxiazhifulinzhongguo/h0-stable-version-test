@@ -45,16 +45,17 @@ export class loginController
         // const [ accessToken,alipayUserId,expiresIn,reExpiresIn,refreshToken,userId ] = await access_token(auth_code)
         const result_token = await getAccessToken(auth_code)
         const result_Info = await getUserInfo(result_token.accessToken)
-        console.log(JSON.stringify(result_Info))
-        ctx.redirect('http://www.junlintianxiazhifulinzhongguo.top/#/auth-redirect'+JSON.stringify(result_Info));
+       // console.log(JSON.stringify(result_Info))
+        const result =JSON.stringify(result_Info)
+        //ctx.redirect('http://www.junlintianxiazhifulinzhongguo.top/#/auth-redirect'+JSON.stringify(result_Info));
         //console.log(5555)  
        // console.log(result)
         // console.log(result_Info)    
         
         
         // const result = {result_Info,roles:  ["admin"], token: "admin", introduction: "我是超级管理员", avatar: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif", name: "Super Admin"}
-        // ctx.body = {
-        //     result
-        // }
+        ctx.body = {
+            result
+        }
     }   
 }
