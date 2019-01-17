@@ -46,9 +46,12 @@ export class loginController
         const result_token = await getAccessToken(auth_code)
         const result_Info = await getUserInfo(result_token.accessToken)
        // console.log(JSON.stringify(result_Info))
-        const result =JSON.stringify(result_Info)
-        const auth_redirect = 'http://www.junlintianxiazhifulinzhongguo.top/#/auth-redirect' + result
-        ctx.redirect(auth_redirect);
+       // const result =JSON.stringify(result_Info)
+        const result = `roles=admin&token=admin&avatar=https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif&name=Super Admin`
+        const auth_redirect = 'http://www.junlintianxiazhifulinzhongguo.top/#/auth-redirect?' + result
+        console.log(result_Info)
+        console.log(auth_redirect)
+        ctx.redirect(auth_redirect)
         //console.log(5555)  
        // console.log(result)
         // console.log(result_Info)    
