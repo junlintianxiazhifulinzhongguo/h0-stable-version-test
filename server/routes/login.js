@@ -33,6 +33,20 @@ export class loginController
             auth_url
         }
     }
+    @get("/qq/authUrl")
+    getAlipayAuthUrl(ctx,next)
+    {
+        ctx.body = {
+            auth_url
+        }
+    }
+    @get("/wechat/authUrl")
+    getAlipayAuthUrl(ctx,next)
+    {
+        ctx.body = {
+            auth_url
+        }
+    }
     @get("/getToken")
     getToken(ctx,next)
     {
