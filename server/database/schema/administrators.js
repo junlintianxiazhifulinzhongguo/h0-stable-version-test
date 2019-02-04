@@ -20,11 +20,7 @@ const administratorsSchema=new Schema({
         require:true,
         type:String
     },
-    alipayUserId:{
-        unique:true,
-        type:String,
-        default:''
-    },
+    alipayUserId:[],
     loginAttempts:{
         require:true,
         type:Number,

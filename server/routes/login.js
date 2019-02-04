@@ -26,7 +26,7 @@ export class loginController
         }
     }
     
-    @get("/authUrl")
+    @get("/alipay/authUrl")
     getAlipayAuthUrl(ctx,next)
     {
         ctx.body = {
