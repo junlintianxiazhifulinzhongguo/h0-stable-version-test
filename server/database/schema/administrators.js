@@ -5,6 +5,7 @@ const Mixed=Schema.Types.Mixed
 const SALT_WORK_FACTOR=10
 const MAX_LOGIN_ATTEMPTS=5
 const LOCK_TIME=2*60*60*1000
+const symbolToken= Symbol()
 const administratorsSchema=new Schema({
     name:{
         require:true,
@@ -29,7 +30,7 @@ const administratorsSchema=new Schema({
         type:String,
         default:'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'
     },
-    token:Symbol(),
+    token:symbolToken,
     expire:{ 
         type: Date, 
         default: Date.now+LOCK_TIME
