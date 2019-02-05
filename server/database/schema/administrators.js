@@ -35,7 +35,10 @@ const administratorsSchema=new Schema({
         type: Date, 
         default: Date.now+LOCK_TIME
     },
-    alipayUserId:undefined,
+    alipayUserId:{
+        type:String,
+        default:''
+    },
     loginAttempts:{
         require:true,
         type:Number,
