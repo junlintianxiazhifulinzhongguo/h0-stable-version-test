@@ -6,21 +6,33 @@ const SALT_WORK_FACTOR=10
 const MAX_LOGIN_ATTEMPTS=5
 const LOCK_TIME=2*60*60*1000
 const administratorsSchema=new Schema({
-    username:{
+    name:{
         require:true,
         unique:true,
         type:String
     },
     email:{
-        require:true,
-        unique:true,
         type:String
     },
     password:{
         require:true,
-        type:String
+        type:String,
+        default:'123456'
     },
-    alipayUserId:[],
+    roles:{
+        require:true,
+        unique:true,
+        type:Number,
+        default:3
+    },
+    avatar:{
+        require:true,
+        type:String,
+        default:'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'
+    },
+    token:Symbol(),
+    expire:Date.now()+LOCK_TIME,
+    alipayUserId:undefined,
     loginAttempts:{
         require:true,
         type:Number,
