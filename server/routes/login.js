@@ -27,7 +27,7 @@ export class loginController
     login(ctx,next)
     {
         ctx.body = {
-            "name":"lijun"
+            "name":"lijun1"
         }
     }
     
