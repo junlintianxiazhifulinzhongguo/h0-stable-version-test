@@ -21,7 +21,6 @@ const administratorsSchema=new Schema({
     },
     roles:{
         require:true,
-        unique:true,
         type:Number,
         default:3
     },
@@ -31,7 +30,10 @@ const administratorsSchema=new Schema({
         default:'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'
     },
     token:Symbol(),
-    expire:Date.now()+LOCK_TIME,
+    expire:{ 
+        type: Date, 
+        default: Date.now+LOCK_TIME
+    },
     alipayUserId:undefined,
     loginAttempts:{
         require:true,
