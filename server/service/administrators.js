@@ -18,7 +18,9 @@ const  getByUsername = async (username) =>{
     return result
 }
 const  addUserByAlipay = async (resultInfo) =>{
-    const is_true = await checkIsRegisterBythirdpart(resultInfo.user_id,'alipay')
+    console.log(resultInfo)
+    console.log(resultInfo.userId)
+    const is_true = await checkIsRegisterBythirdpart('alipayUserId',resultInfo.userId)
     if(!is_true)
     {
         const administrators = new Administrators();
@@ -26,10 +28,10 @@ const  addUserByAlipay = async (resultInfo) =>{
             name: resultInfo.nick_name,
             avatar: resultInfo.avatar,
             email: '2211672s8@qq.com',
-            alipayUserId: resultInfo.user_id
+            alipayUserId: resultInfo.userId
         });
     }   
-    const result =await Administrators.find({'alipayUserId':resultInfo.user_id})
+    const result =await Administrators.find({'alipayUserId':resultInfo.userId})
     return result
 }
 export {
