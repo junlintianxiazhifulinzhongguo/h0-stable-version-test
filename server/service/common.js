@@ -5,7 +5,7 @@ const checkIsRegisterBythirdpart = async (thirdpart,id) => {
    console.log(id)
    const result = await Administrators.find({ 'alipayUserId' : id})
    console.log(result)
-   if (result)
+   if (result.length)
    {
        return true
    }
