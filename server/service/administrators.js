@@ -21,6 +21,7 @@ const  addUserByAlipay = async (resultInfo) =>{
     console.log(resultInfo)
     console.log(resultInfo.userId)
     const is_true = await checkIsRegisterBythirdpart('alipayUserId',resultInfo.userId)
+    console.log(is_true,222)
     if(!is_true)
     {
         const administrators = new Administrators();
