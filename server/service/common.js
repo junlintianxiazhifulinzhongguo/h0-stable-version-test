@@ -3,17 +3,18 @@ const Administrators = mongoose.model("Administrators");
 const checkIsRegisterBythirdpart = async (thirdpart,id) => {
    console.log(thirdpart)
    console.log(id)
-   const result
+   
    switch(thirdpart)
    {
         case 'alipayUserId':
-            result = await Administrators.find({ 'alipayUserId' : id})
-            break;
+            const result = await Administrators.find({ 'alipayUserId' : id})
+            return result;
         case 'qqUserId':
-            result = await Administrators.find({ 'qqUserId' : id})
-            break;
+            const result = await Administrators.find({ 'qqUserId' : id})
+            return result;
         default:
-            result = await Administrators.find({ 'wechatUserId' : id})    
+            const result = await Administrators.find({ 'wechatUserId' : id})
+            return result;    
    }
    console.log(result)
    if (result)
