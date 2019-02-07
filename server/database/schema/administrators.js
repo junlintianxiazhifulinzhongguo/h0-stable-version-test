@@ -33,7 +33,7 @@ const administratorsSchema=new Schema({
     token:token,
     expire:{ 
         type: Date, 
-        default: Date.now+LOCK_TIME
+        default: Date.getTime+LOCK_TIME
     },
     alipayUserId:{
         type:String,
