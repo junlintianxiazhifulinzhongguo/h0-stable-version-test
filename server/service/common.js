@@ -10,10 +10,10 @@ const checkIsRegisterBythirdpart = async (thirdpart,id) => {
             const result = await Administrators.find({ 'alipayUserId' : id})
             return result;
         case 'qqUserId':
-            const result = await Administrators.find({ 'qqUserId' : id})
+            result = await Administrators.find({ 'qqUserId' : id})
             return result;
         default:
-            const result = await Administrators.find({ 'wechatUserId' : id})
+            result = await Administrators.find({ 'wechatUserId' : id})
             return result;    
    }
    console.log(result)
