@@ -25,14 +25,14 @@ const  addUserByAlipay = async (resultInfo) =>{
     if(!is_true)
     {
         const administrators = new Administrators();
-        await Administrators.save({  
+        await administrators.save({  
             name: resultInfo.nick_name,
             avatar: resultInfo.avatar,
             email: '2211672s8@qq.com',
             alipayUserId: resultInfo.userId
         });
     }   
-    const result =await Administrators.find({'alipayUserId':resultInfo.userId})
+    const result =await administrators.find({'alipayUserId':resultInfo.userId})
     return result
 }
 export {
