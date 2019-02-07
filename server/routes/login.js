@@ -76,8 +76,8 @@ export class loginController
         const { app_id,source,scope,auth_code } = ctx.query
         const resultToken = await getAccessToken(auth_code)
         const resultInfo = await getUserInfo(resultToken.accessToken)
-        await addUserByAlipay(resultInfo)
-        const auth_redirect = 'http://www.junlintianxiazhifulinzhongguo.top/#/auth-redirect?auth-type=alipay&user_id=' + resultInfo.user_id
+        const result = await addUserByAlipay(resultInfo)
+        const auth_redirect = 'http://www.junlintianxiazhifulinzhongguo.top/#/auth-redirect?auth-type=alipay&user_id=' + result.alipayUserId
         ctx.redirect(auth_redirect)
     }   
 }
