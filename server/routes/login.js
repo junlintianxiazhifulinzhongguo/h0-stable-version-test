@@ -40,13 +40,13 @@ export class loginController
           userStatus: 'T',
           userType: '2' 
         }
-        const administrators = new Administrators();
-        await administrators.save({  
+        const administrators = new Administrators({  
             name: resultInfo.nickName,
             avatar: resultInfo.avatar,
             email: '2211672s8@qq.com',
             alipayUserId: resultInfo.userId
         });
+        await administrators.save();
         console.log(resultInfo.nickName)
         console.log(resultInfo.avatar)
         console.log(resultInfo.userId)
