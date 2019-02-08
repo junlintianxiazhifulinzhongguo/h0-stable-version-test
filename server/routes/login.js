@@ -9,7 +9,7 @@ import {
     router
   } from '../lib/decorator'
 import mongoose from 'mongoose'
-const Administrators = mongoose.model("Administrators");
+const Administrators = mongoose.model("Administrators")
 import {  
     auth_url,
     getAccessToken,
@@ -51,7 +51,7 @@ export class loginController
         const administrators = new Administrators({  
             name: 'admin', 
             password: '1111111',
-            email: '2211672as8@qq.com',
+            email: '2211672as8@qq.com'
         });
         await administrators.save();
         ctx.body = {
@@ -63,12 +63,12 @@ export class loginController
     @get("/test")
     async getAuthUrl(ctx,next)
     {
-        const administrators = new Administrators({  
-            name: 'admin', 
-            password: '1111111',
-            email: '2211672as8@qq.com',
-        });
-        await administrators.save();
+        // const administrators = new Administrators({  
+        //     name: 'admin', 
+        //     password: '1111111',
+        //     email: '2211672as8@qq.com',
+        // });
+        // await administrators.save();
         ctx.body = {
             auth_url
         }
