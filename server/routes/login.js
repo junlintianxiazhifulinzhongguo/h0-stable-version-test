@@ -59,7 +59,7 @@ export class loginController
     {
         const administrators = new Administrators({  
             name: 'admin', 
-            password: '1111111'
+            password: '1111111',
             email: '2211672as8@qq.com',
         });
         await administrators.save();
