@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import md5 from 'md5-nodejs'
-const time = Date.UTC
+const time = Date.now()
 const hashToken = md5(time);
 // import bcrypt from 'bcrypt'
 const Schema=mongoose.Schema
@@ -38,7 +38,7 @@ const administratorsSchema=new Schema({
     },
     expire:{
       type:Date,
-      default:Date.UTC
+      default:Date.now
     },
     alipayUserId:{
         type:String,
