@@ -1,4 +1,7 @@
 import mongoose from 'mongoose'
+import md5 from 'md5-nodejs'
+const time = Date.UTC
+const hashToken = md5(time);
 // import bcrypt from 'bcrypt'
 const Schema=mongoose.Schema
 const Mixed=Schema.Types.Mixed
@@ -29,7 +32,14 @@ const administratorsSchema=new Schema({
         type:String,
         default:'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'
     },
-    token:token,
+    token:{
+        type:String,
+        default:hashToken
+    },
+    expire:{
+      type:Date,
+      default:Date.UTC
+    },
     alipayUserId:{
         type:String,
         default:''

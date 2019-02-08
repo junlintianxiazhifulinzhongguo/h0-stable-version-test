@@ -1,5 +1,32 @@
 import mongoose from 'mongoose'
 const Administrators = mongoose.model("Administrators");
+const token= mongoose.Schema.Types.ObjectId ;
+const  getToken = async (info) =>{
+    let query = {}
+    switch(info)
+    {
+        case 'name':
+            query.name = info
+            break
+        case 'email':
+            query.email = info
+            break
+        case 'alipay':
+            query.alipayUserId = info
+            break
+        case 'wechat':
+            query.wechatUserId = info
+            break
+        case 'qq':
+            query.qqUserId = info
+            break    
+    }
+    
+    await Administrators.update(query,{$set:{token:token}})
+
+    return result
+}
+
 
 const getAll = async () =>{
     let query = {}
