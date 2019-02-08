@@ -55,8 +55,8 @@ export class loginController
             email: '2211672as8@qq.com'
         });
         console.log(222)
-        await administrators.save();
-        
+        const a = await administrators.save();
+        console.log(a)
         console.log(333)
         ctx.body = {
             "name":"lijun1",
