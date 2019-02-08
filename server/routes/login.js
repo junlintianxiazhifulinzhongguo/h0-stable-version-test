@@ -83,9 +83,9 @@ export class loginController
         const { type,value } = ctx.request.body
         console.log(type)
         console.log(value)
-        // const token = await getToken(type,value)
+        const token = await getToken(type,value)
         ctx.body = {
-            "name":"lijun1"
+            token
         }
     }
     @get("/getUserInfo")

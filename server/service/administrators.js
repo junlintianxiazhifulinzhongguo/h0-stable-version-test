@@ -11,7 +11,8 @@ const  getToken = async (type,value) =>{
             query.password = value.password
             break
         case 'email':
-            query.email = value
+            query.email = value.email
+            query.password = value.password
             break
         case 'alipay':
             query.alipayUserId = value
