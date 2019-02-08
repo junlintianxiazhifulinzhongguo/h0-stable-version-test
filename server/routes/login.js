@@ -48,12 +48,16 @@ export class loginController
         //           name: "Super Admin"
         //         }
         // const result = await getToken('alipay',resultInfo.userId)
+        console.log(111)
         const administrators = new Administrators({  
             name: 'admin', 
             password: '1111111',
             email: '2211672as8@qq.com'
         });
+        console.log(222)
         await administrators.save();
+        
+        console.log(333)
         ctx.body = {
             "name":"lijun1",
             result 
