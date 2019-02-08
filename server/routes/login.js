@@ -49,15 +49,7 @@ export class loginController
         //         }
         // const result = await getToken('alipay',resultInfo.userId)
         console.log(111)
-        const administrators = new Administrators({  
-            name: 'admin', 
-            password: '1111111',
-            email: '2211672as8@qq.com'
-        });
-        console.log(222)
-        const a = await administrators.save();
-        console.log(a)
-        console.log(333)
+        await Administrators.find({name:'君临天下之福邻忠帼'});
         ctx.body = {
             "name":"lijun1",
         }
