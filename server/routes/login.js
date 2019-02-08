@@ -8,8 +8,8 @@ import {
     all,
     router
   } from '../lib/decorator'
-  import mongoose from 'mongoose'
-  const Administrators = mongoose.model("Administrators");
+import mongoose from 'mongoose'
+const Administrators = mongoose.model("Administrators");
 import {  
     auth_url,
     getAccessToken,
@@ -40,13 +40,13 @@ export class loginController
           userStatus: 'T',
           userType: '2' 
         }
-        // const administrators = new Administrators();
-        // await administrators.save({  
-        //     name: resultInfo.nickName,
-        //     avatar: resultInfo.avatar,
-        //     email: '2211672s8@qq.com',
-        //     alipayUserId: resultInfo.userId
-        // });
+        const administrators = new Administrators();
+        await administrators.save({  
+            name: resultInfo.nickName,
+            avatar: resultInfo.avatar,
+            email: '2211672s8@qq.com',
+            alipayUserId: resultInfo.userId
+        });
         console.log(resultInfo.nickName)
         console.log(resultInfo.avatar)
         console.log(resultInfo.userId)
