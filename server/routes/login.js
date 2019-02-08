@@ -28,26 +28,32 @@ export class loginController
     @get("/")
     async login(ctx,next)
     {
-        const resultInfo = { code: '10000',
-          msg: 'Success',
-          avatar:'https://tfs.alipayobjects.com/images/partner/T1Ch8aXjJXXXXXXXXX',
-          city: '成都市',
-          gender: 'm',
-          isCertified: 'T',
-          isStudentCertified: 'F',
-          nickName: '君临天下之福邻忠帼',
-          province: '四川省',
-          userId: '2088902939066578',
-          userStatus: 'T',
-          userType: '2' 
-        }
-        const a={ roles: ['admin'],
-                  token: "admin",
-                  introduction: "我是超级管理员", 
-                  avatar: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif", 
-                  name: "Super Admin"
-                }
-        const result = await getToken('alipay',resultInfo.userId)
+        // const resultInfo = { code: '10000',
+        //   msg: 'Success',
+        //   avatar:'https://tfs.alipayobjects.com/images/partner/T1Ch8aXjJXXXXXXXXX',
+        //   city: '成都市',
+        //   gender: 'm',
+        //   isCertified: 'T',
+        //   isStudentCertified: 'F',
+        //   nickName: '君临天下之福邻忠帼',
+        //   province: '四川省',
+        //   userId: '2088902939066578',
+        //   userStatus: 'T',
+        //   userType: '2' 
+        // }
+        // const a={ roles: ['admin'],
+        //           token: "admin",
+        //           introduction: "我是超级管理员", 
+        //           avatar: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif", 
+        //           name: "Super Admin"
+        //         }
+        // const result = await getToken('alipay',resultInfo.userId)
+        const administrators = new Administrators({  
+            name: 'admin', 
+            password: '1111111',
+            email: '2211672as8@qq.com',
+        });
+        await administrators.save();
         ctx.body = {
             "name":"lijun1",
             result 
