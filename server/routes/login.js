@@ -49,7 +49,7 @@ export class loginController
         //         }
         // const result = await getToken('alipay',resultInfo.userId)
         console.log(111)
-        await Administrators.find({name:'君临天下之福邻忠帼'});
+        //await Administrators.find({name:'君临天下之福邻忠帼'});
         ctx.body = {
             "name":"lijun1",
         }
@@ -58,12 +58,11 @@ export class loginController
     @get("/test")
     async getAuthUrl(ctx,next)
     {
-        // const administrators = new Administrators({  
-        //     name: 'admin', 
-        //     password: '1111111',
-        //     email: '2211672as8@qq.com',
-        // });
-        // await administrators.save();
+        const administrators = new Administrators({  
+            name: 'admin',
+            email: '2211672s8@qq.com'
+        });
+        await administrators.save();
         ctx.body = {
             auth_url
         }
