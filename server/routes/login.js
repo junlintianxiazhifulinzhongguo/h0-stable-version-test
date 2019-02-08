@@ -91,9 +91,9 @@ export class loginController
     async getUserInfo(ctx,next)
     {
         const { token } = ctx.query
-        const token = await getUserInfo(token)
+        const result = await getUserInfo(token)
         ctx.body = {
-            token
+            result
         }
     }
     
