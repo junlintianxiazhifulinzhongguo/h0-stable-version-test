@@ -8,6 +8,7 @@ import {
     all,
     router
   } from '../lib/decorator'
+  import mongoose from 'mongoose'
   const Administrators = mongoose.model("Administrators");
 import {  
     auth_url,
