@@ -76,11 +76,12 @@ export class loginController
             auth_url
         }
     }
-    @get("/getToken")
+    @post("/getToken")
     async getToken(ctx,next)
     {
-        const { type,value } = ctx.query
-        console.log(ctx.query)
+        console.log(ctx.body)
+        const { type,value } = ctx.body
+        console.log(ctx.body)
         console.log(type,value)
         const token = await getToken(type,value)
         ctx.body = {
