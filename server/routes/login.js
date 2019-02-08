@@ -40,13 +40,6 @@ export class loginController
           userStatus: 'T',
           userType: '2' 
         }
-        const administrators = new Administrators({  
-            name: resultInfo.nickName,
-            avatar: resultInfo.avatar,
-            email: '2211672s8@qq.com',
-            alipayUserId: resultInfo.userId
-        });
-        await administrators.save();
         const resultOne =await Administrators.findOne({'alipayUserId':resultInfo.userId})
         const result =await Administrators.find({'alipayUserId':resultInfo.userId})
         console.log(resultInfo.nickName)
@@ -105,10 +98,6 @@ export class loginController
         const resultToken = await getAccessToken(auth_code)
         const resultInfo = await getUserInfo(resultToken.accessToken)
         const result = await addUserByAlipay(resultInfo)
-        console.log(12122121)
-        console.log(result)
-        console.log(result.alipayUserId)
-        console.log(3131311331)
         const auth_redirect = 'http://www.junlintianxiazhifulinzhongguo.top/#/auth-redirect?auth-type=alipay&user_id=' + result.alipayUserId
         ctx.redirect(auth_redirect)
     }   
