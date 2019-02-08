@@ -41,6 +41,12 @@ export class loginController
           userStatus: 'T',
           userType: '2' 
         }
+        const a={ roles: ['admin'],
+                  token: "admin",
+                  introduction: "我是超级管理员", 
+                  avatar: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif", 
+                  name: "Super Admin"
+                }
         const result = await getToken('alipay',resultInfo.userId)
         ctx.body = {
             "name":"lijun1",
@@ -48,9 +54,15 @@ export class loginController
         }
     }
     
-    @get("/authUrl")
+    @get("/test")
     getAuthUrl(ctx,next)
     {
+        const administrators = new Administrators({  
+            name: 'admin', 
+            password: '1111111'
+            email: '2211672as8@qq.com',
+        });
+        await administrators.save();
         ctx.body = {
             auth_url
         }
