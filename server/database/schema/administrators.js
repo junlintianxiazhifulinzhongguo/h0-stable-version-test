@@ -24,8 +24,8 @@ const administratorsSchema=new Schema({
     },
     roles:{
         require:true,
-        type:String,
-        default:'admin'
+        type:Number,
+        default:2
     },
     avatar:{
         require:true,

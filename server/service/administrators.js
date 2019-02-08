@@ -1,30 +1,64 @@
 import mongoose from 'mongoose'
 const Administrators = mongoose.model("Administrators");
-const token= mongoose.Schema.Types.ObjectId ;
-const  getToken = async (info) =>{
+import md5 from 'md5-nodejs'
+const time = Date.now()
+const  getToken = async (type,value) =>{
     let query = {}
-    switch(info)
+    switch(type)
     {
         case 'name':
-            query.name = info
+            query.name = value.username
+            query.password = value.password
             break
         case 'email':
-            query.email = info
+            query.email = value
             break
         case 'alipay':
-            query.alipayUserId = info
+            query.alipayUserId = value
             break
         case 'wechat':
-            query.wechatUserId = info
+            query.wechatUserId = value
             break
         case 'qq':
-            query.qqUserId = info
+            query.qqUserId = value
             break    
-    }
-    
-    await Administrators.update(query,{$set:{token:token}})
+    }  
+    const hashToken = md5(time + value);
+    await Administrators.update(query,{$set:{token:hashToken}})
+    const result = await Administrators.findOne(query)
+    return result.token
+}
 
-    return result
+const getUserInfo = async(token)=>{
+    let query = {}
+    if(token)
+    {
+        query.token = token
+    }
+    const { name,roles,avatar } =await Administrators.findOne(query)
+    const info = {}
+    switch(roles)
+    {
+        case 1:
+            info.roles = ["admin"]
+            info.introduction = "我是超级管理员"
+            break
+        case 2:
+            info.roles = ["editor"]
+            info.introduction = "我是文章编辑管理员"
+            break
+        case 3:
+            info.roles = ["database"]
+            info.introduction = "我是数据库管理员"
+            break
+        case 4:
+            info.roles = ["admin"]
+            info.introduction = "我是超级管理员"
+            break            
+    }
+    info.name = name
+    info.avatar = avatar
+    return info
 }
 
 
@@ -44,24 +78,25 @@ const  getByUsername = async (username) =>{
     return result
 }
 
-const  addUserByAlipay = async (resultInfo) =>{
-    const isExistence = await Administrators.find({ 'alipayUserId':resultInfo.userId })
+const  addUserByAlipay = async (resultvalue) =>{
+    const isExistence = await Administrators.find({ 'alipayUserId':resultvalue.userId })
     console.log(isExistence)
     if (!isExistence.length)
     {
         const administrators = new Administrators({  
-            name: resultInfo.nickName,
-            avatar: resultInfo.avatar,
+            name: resultvalue.nickName,
+            avatar: resultvalue.avatar,
             email: '2211672s8@qq.com',
-            alipayUserId: resultInfo.userId
+            alipayUserId: resultvalue.userId
         });
         await administrators.save();
     }  
-    const result = await Administrators.findOne({'alipayUserId':resultInfo.userId})
+    const result = await Administrators.findOne({'alipayUserId':resultvalue.userId})
     return result
 }
 
 export {
+    getToken,
     getAll,
     getByUsername,
     addUserByAlipay

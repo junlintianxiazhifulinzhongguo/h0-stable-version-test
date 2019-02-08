@@ -16,7 +16,8 @@ import {
     getUserInfo
 } from '../service/alipay'
 
-import {  
+import { 
+    getToken, 
     addUserByAlipay
 } from '../service/administrators'
 
@@ -40,14 +41,9 @@ export class loginController
           userStatus: 'T',
           userType: '2' 
         }
-        const resultOne =await Administrators.findOne({'alipayUserId':resultInfo.userId})
-        const result =await Administrators.find({'alipayUserId':resultInfo.userId})
-        console.log(resultInfo.nickName)
-        console.log(resultInfo.avatar)
-        console.log(resultInfo.userId)
+        const result = await getToken('alipay',resultInfo.userId)
         ctx.body = {
             "name":"lijun1",
-            resultOne,
             result 
         }
     }
@@ -83,14 +79,24 @@ export class loginController
     @get("/getToken")
     getToken(ctx,next)
     {
+        const { type,value } = ctx.query
+        console.log(ctx.query)
+        console.log(type,value)
+        const token = await getToken(type,value)
         ctx.body = {
-            roles:  ["admin"],
-            token: "admin", 
-            introduction: "我是超级管理员", 
-            avatar: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif", 
-            name: "Super Admin"
+            token
         }
     }
+    @get("/getUserInfo")
+    getUserInfo(ctx,next)
+    {
+        const { token } = ctx.query
+        const token = await getUserInfo(token)
+        ctx.body = {
+            token
+        }
+    }
+    
     @get("/authRedirect")
     async getAlipayAuthUrlById(ctx,next)
     {
