@@ -105,10 +105,8 @@ export class loginController
     async getInfo(ctx,next)
     {
         const { token } = ctx.params
-        const result = await getInfo(token)
-        ctx.body = {
-            result
-        }
+        const data = await getInfo(token)
+        ctx.body =  data
     }
     
     @get("/authRedirect")
