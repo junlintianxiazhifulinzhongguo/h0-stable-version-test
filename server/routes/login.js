@@ -39,13 +39,16 @@ export class loginController
           userStatus: 'T',
           userType: '2' 
         }
-        const administrators = new Administrators();
-        await administrators.save({  
-            name: resultInfo.nickName,
-            avatar: resultInfo.avatar,
-            email: '2211672s8@qq.com',
-            alipayUserId: resultInfo.userId
-        });
+        // const administrators = new Administrators();
+        // await administrators.save({  
+        //     name: resultInfo.nickName,
+        //     avatar: resultInfo.avatar,
+        //     email: '2211672s8@qq.com',
+        //     alipayUserId: resultInfo.userId
+        // });
+        console.log(resultInfo.nickName)
+        console.log(resultInfo.avatar)
+        console.log(resultInfo.userId)
         ctx.body = {
             "name":"lijun1"
         }
