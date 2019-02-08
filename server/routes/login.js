@@ -18,7 +18,8 @@ import {
 
 import { 
     getToken, 
-    addUserByAlipay
+    addUserByAlipay,
+    getUserInfo
 } from '../service/administrators'
 
 
@@ -103,7 +104,7 @@ export class loginController
     @get("/getUserInfo")
     async getUserInfo(ctx,next)
     {
-        const { token } = ctx.query
+        const { token } = ctx.params
         const result = await getUserInfo(token)
         ctx.body = {
             result
