@@ -59,6 +59,7 @@ const getInfo = async(token)=>{
     }
     info.name = name
     info.avatar = avatar
+    info.token = token
     return info
 }
 
