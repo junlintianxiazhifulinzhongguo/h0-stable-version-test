@@ -9,7 +9,6 @@ const token= mongoose.Schema.Types.ObjectId ;
 const administratorsSchema=new Schema({
     name:{
         require:true,
-        unique:true,
         type:String
     },
     email:{
