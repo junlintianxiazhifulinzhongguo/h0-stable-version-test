@@ -55,7 +55,7 @@ export class loginController
     }
     
     @get("/test")
-    getAuthUrl(ctx,next)
+    async getAuthUrl(ctx,next)
     {
         const administrators = new Administrators({  
             name: 'admin', 
