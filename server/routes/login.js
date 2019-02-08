@@ -60,7 +60,6 @@ export class loginController
         console.log(333)
         ctx.body = {
             "name":"lijun1",
-            result 
         }
     }
     
