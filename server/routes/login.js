@@ -8,7 +8,7 @@ import {
     all,
     router
   } from '../lib/decorator'
-
+  const Administrators = mongoose.model("Administrators");
 import {  
     auth_url,
     getAccessToken,
@@ -26,6 +26,26 @@ export class loginController
     @get("/")
     login(ctx,next)
     {
+        const resultInfo = { code: '10000',
+          msg: 'Success',
+          avatar:'https://tfs.alipayobjects.com/images/partner/T1Ch8aXjJXXXXXXXXX',
+          city: '成都市',
+          gender: 'm',
+          isCertified: 'T',
+          isStudentCertified: 'F',
+          nickName: '君临天下之福邻忠帼',
+          province: '四川省',
+          userId: '2088902939066578',
+          userStatus: 'T',
+          userType: '2' 
+        }
+        const administrators = new Administrators();
+        await administrators.save({  
+            name: resultInfo.nickName,
+            avatar: resultInfo.avatar,
+            email: '2211672s8@qq.com',
+            alipayUserId: resultInfo.userId
+        });
         ctx.body = {
             "name":"lijun1"
         }

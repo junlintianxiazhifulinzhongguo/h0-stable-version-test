@@ -32,7 +32,7 @@ const  addUserByAlipay = async (resultInfo) =>{
             alipayUserId: resultInfo.userId
         });
     }   
-    const result =await administrators.find({'alipayUserId':resultInfo.userId})
+    const result =await Administrators.find({'alipayUserId':resultInfo.userId})
     return result
 }
 export {
