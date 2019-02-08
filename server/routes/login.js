@@ -24,7 +24,7 @@ import {
 export class loginController
 {
     @get("/")
-    login(ctx,next)
+    async login(ctx,next)
     {
         const resultInfo = { code: '10000',
           msg: 'Success',
