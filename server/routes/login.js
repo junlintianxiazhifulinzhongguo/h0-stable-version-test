@@ -77,7 +77,7 @@ export class loginController
         }
     }
     @get("/getToken")
-    getToken(ctx,next)
+    async getToken(ctx,next)
     {
         const { type,value } = ctx.query
         console.log(ctx.query)
@@ -88,7 +88,7 @@ export class loginController
         }
     }
     @get("/getUserInfo")
-    getUserInfo(ctx,next)
+    async getUserInfo(ctx,next)
     {
         const { token } = ctx.query
         const token = await getUserInfo(token)
