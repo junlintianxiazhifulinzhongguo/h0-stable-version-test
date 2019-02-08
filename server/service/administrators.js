@@ -30,7 +30,7 @@ const  getToken = async (type,value) =>{
     return result.token
 }
 
-const getUserInfo = async(token)=>{
+const getInfo = async(token)=>{
     let query = {}
     if(token)
     {
@@ -101,5 +101,5 @@ export {
     getAll,
     getByUsername,
     addUserByAlipay,
-    getUserInfo
+    getInfo
 }
