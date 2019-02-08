@@ -79,13 +79,13 @@ export class loginController
     @post("/getToken")
     async getToken(ctx,next)
     {
-        console.log(ctx.params)
-        const { type,value } = ctx.params
-        console.log(ctx.params)
-        console.log(type,value)
-        const token = await getToken(type,value)
+        console.log(ctx.body)
+        // const { type,value } = ctx.params
+        // console.log(ctx.params)
+        // console.log(type,value)
+        // const token = await getToken(type,value)
         ctx.body = {
-            token
+            "name":"lijun1"
         }
     }
     @get("/getUserInfo")
