@@ -47,11 +47,15 @@ export class loginController
             alipayUserId: resultInfo.userId
         });
         await administrators.save();
+        const resultOne =await Administrators.findOne({'alipayUserId':resultInfo.userId})
+        const result =await Administrators.find({'alipayUserId':resultInfo.userId})
         console.log(resultInfo.nickName)
         console.log(resultInfo.avatar)
         console.log(resultInfo.userId)
         ctx.body = {
-            "name":"lijun1"
+            "name":"lijun1",
+            resultOne,
+            result 
         }
     }
     
