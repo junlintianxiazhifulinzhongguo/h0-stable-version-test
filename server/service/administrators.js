@@ -100,5 +100,6 @@ export {
     getToken,
     getAll,
     getByUsername,
-    addUserByAlipay
+    addUserByAlipay,
+    getUserInfo
 }
