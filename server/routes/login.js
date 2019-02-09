@@ -104,7 +104,9 @@ export class loginController
     @get("/getUserInfo")
     async getInfo(ctx,next)
     {
-        const { token } = ctx.params
+        console.log(ctx.query)
+        console.log(ctx.params)
+        const { token } = ctx.query
         console.log(token)
         const data = await getInfo(token)
         ctx.body =  data
